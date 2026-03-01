@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered note summarization and quiz generation. Upload your notes and learn faster.">
+    <title>Hush | Smart Notes & Learning</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="logo">
+            <span class="icon">✨</span>
+            <h1>Hush</h1>
+        </div>
+        <p class="subtitle">Turn your notes into knowledge instantly.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Upload Section -->
+        <section id="upload-section" class="card glass">
+            <div id="drop-zone" class="drop-zone">
+                <div class="drop-icon">📄</div>
+                <h2>Upload your notes</h2>
+                <p>Drag & drop your text or PDF file here, or click to browse.</p>
+                <input type="file" id="file-input" accept=".txt,.pdf" hidden>
+                <button id="browse-btn" class="btn primary-btn">Browse Files</button>
+            </div>
+            <div id="file-info" class="file-info hidden">
+                <span id="file-name">filename.txt</span>
+                <button id="upload-btn" class="btn action-btn">Generate Magic</button>
+            </div>
+            <div id="error-message" class="error-msg hidden"></div>
+        </section>
+
+        <!-- Loading State -->
+        <section id="loading-section" class="card glass hidden">
+            <div class="loader">
+                <div class="spinner"></div>
+                <h3 id="loading-text">Analyzing your notes...</h3>
+                <p>Our AI is crafting a beautiful summary and building your custom quiz. This usually takes a few
+                    seconds.</p>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-layout hidden">
+
+            <!-- Summary Sidebar -->
+            <aside class="summary-container card glass">
+                <div class="header-with-icon">
+                    <span class="icon">📝</span>
+                    <h2>Summary</h2>
+                </div>
+                <div id="summary-content" class="markdown-content">
+                    <!-- Summary injected here -->
+                </div>
+            </aside>
+
+            <!-- Quiz Main Area -->
+            <div class="quiz-container card glass">
+                <div class="header-with-icon">
+                    <span class="icon">🎯</span>
+                    <h2>Knowledge Check</h2>
+                </div>
+                <div class="progress-bar">
+                    <div id="quiz-progress" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="quiz-status">
+                    <span id="question-count">Question 1 of 20</span>
+                    <span id="score-display">Score: 0</span>
+                </div>
+
+                <div id="quiz-slides" class="quiz-slides">
+                    <!-- Questions injected here -->
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prev-btn" class="btn secondary-btn" disabled>Previous</button>
+                    <button id="next-btn" class="btn primary-btn" disabled>Next</button>
+                </div>
+
+                <!-- Feedback overlay -->
+                <div id="feedback-panel" class="feedback-panel hidden">
+                    <h3 id="feedback-title">Correct!</h3>
+                    <p id="feedback-desc">Explanation goes here.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

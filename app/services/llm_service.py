@@ -43,6 +43,7 @@ Content:
             {"role": "user", "content": prompt}
         ],
         temperature=0.3
+        
     )
 
     output = response.choices[0].message.content
