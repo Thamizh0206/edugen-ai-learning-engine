@@ -1,3 +1,3 @@
 # hush_project
 
-Initial commit 
+Initial commit created by assistant.
