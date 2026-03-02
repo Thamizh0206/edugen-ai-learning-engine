@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen font-inter;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl p-2.5 text-base font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .primary-btn {
+    @apply bg-primary text-[#1e1b4b] hover:bg-primary-hover;
+  }
+
+  .primary-btn:hover {
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
+  }
+
+  .secondary-btn {
+    @apply bg-white/10 text-foreground border border-white/20 hover:bg-white/20;
+  }
+
+  .action-btn {
+    @apply bg-gradient-to-r from-[#38bdf8] to-[#818cf8] text-white;
+  }
+
+  .action-btn:hover {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
