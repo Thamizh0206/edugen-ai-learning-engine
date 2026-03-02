@@ -13,10 +13,10 @@ import traceback
 # --- Rate limiter ---
 limiter = Limiter(key_func=get_remote_address)
 
-# --- DB init ---
+# ---- DB init ----
 init_db()
 
-# --- App ---
+# ---- App ----
 app = FastAPI(title="Hush", description="AI-powered note summarizer and quiz generator")
 app.state.limiter = limiter
 
