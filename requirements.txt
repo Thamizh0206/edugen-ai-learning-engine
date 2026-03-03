@@ -10,3 +10,8 @@ sentence-transformers
 PyMuPDF
 slowapi
 json-repair
+sqlalchemy
+psycopg2-binary
+bcrypt==4.0.1
+passlib
+python-jose

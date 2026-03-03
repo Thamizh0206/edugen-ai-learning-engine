@@ -5,7 +5,10 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from app.routes.upload import router as upload_router
+from app.routes.auth import router as auth_router
 from app.routes import quiz
+from app.database.session import engine
+from app.database.models import Base
 from app.database.db import init_db
 import os
 import traceback
@@ -15,6 +18,7 @@ limiter = Limiter(key_func=get_remote_address)
 
 # ---- DB init ----
 init_db()
+Base.metadata.create_all(bind=engine)
 
 # ---- App ----
 app = FastAPI(title="Hush", description="AI-powered note summarizer and quiz generator")
@@ -22,6 +26,7 @@ app.state.limiter = limiter
 
 # --- Routes ---
 app.include_router(upload_router)
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(quiz.router)
 
 # --- Errors ---

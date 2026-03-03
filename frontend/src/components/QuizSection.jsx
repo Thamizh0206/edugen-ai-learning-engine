@@ -12,13 +12,13 @@ export const QuizSection = ({ questions, topic, user_id, onHome }) => {
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
 
-    const currentQuestion = questions[currentIndex];
-    const totalQuestions = questions.length;
-    const progress = ((currentIndex + 1) / totalQuestions) * 100;
-    const isFinished = Object.keys(userAnswers).length === totalQuestions;
+    const currentQuestion = questions && questions.length > 0 ? questions[currentIndex] : null;
+    const totalQuestions = questions ? questions.length : 0;
+    const progress = totalQuestions > 0 ? ((currentIndex + 1) / totalQuestions) * 100 : 0;
+    const isFinished = questions && Object.keys(userAnswers).length === totalQuestions;
 
     const handleSelectOption = async (optionLetter) => {
-        if (userAnswers[currentIndex] || loading[currentIndex]) return;
+        if (!currentQuestion || userAnswers[currentIndex] || loading[currentIndex]) return;
 
         setUserAnswers(prev => ({ ...prev, [currentIndex]: optionLetter }));
         setLoading(prev => ({ ...prev, [currentIndex]: true }));
@@ -86,7 +86,7 @@ export const QuizSection = ({ questions, topic, user_id, onHome }) => {
         setShowScore(false);
     };
 
-    if (!questions || questions.length === 0) {
+    if (!questions || questions.length === 0 || !currentQuestion) {
         return (
             <div className="glass p-12 rounded-3xl text-center">
                 <div className="w-16 h-16 rounded-full bg-danger/10 flex items-center justify-center mx-auto mb-6">
@@ -99,23 +99,23 @@ export const QuizSection = ({ questions, topic, user_id, onHome }) => {
     }
 
     if (showScore) {
-        const percentage = Math.round((score / totalQuestions) * 100);
+        const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
         let rank = "Novice Explorer";
         let message = "Keep learning, you'll get there!";
-        let rankColor = "text-sky-400";
+        let rankColor = "text-sky-500";
 
         if (percentage >= 90) {
             rank = "Master Mind";
             message = "Unbelievable! You're a true subject expert.";
-            rankColor = "text-amber-600";
+            rankColor = "text-amber-500";
         } else if (percentage >= 70) {
             rank = "Knowledge Seeker";
             message = "Great work! You have a solid grasp of the material.";
-            rankColor = "text-emerald-600";
+            rankColor = "text-emerald-500";
         } else if (percentage >= 50) {
             rank = "Rising Star";
             message = "Good effort! A bit more study and you'll be an expert.";
-            rankColor = "text-blue-600";
+            rankColor = "text-blue-500";
         }
 
         return (
