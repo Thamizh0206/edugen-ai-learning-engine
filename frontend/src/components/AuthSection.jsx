@@ -56,7 +56,7 @@ export const AuthSection = ({ onAuthSuccess }) => {
                         {isLogin ? 'Welcome Back' : 'Create Account'}
                     </h2>
                     <p className="text-slate-500 mt-2 font-medium">
-                        {isLogin ? 'Log in to save your progress' : 'Join Hush to start your journey'}
+                        {isLogin ? 'Log in to save your progress' : 'Join EduGen AI to start your journey'}
                     </p>
                 </div>
 

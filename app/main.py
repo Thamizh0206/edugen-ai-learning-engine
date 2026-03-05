@@ -21,7 +21,7 @@ init_db()
 Base.metadata.create_all(bind=engine)
 
 # ---- App ----
-app = FastAPI(title="Hush", description="AI-powered note summarizer and quiz generator")
+app = FastAPI(title="EduGen AI", description="Adaptive AI learning engine with RAG")
 app.state.limiter = limiter
 
 # --- Routes ---
@@ -57,7 +57,7 @@ def read_root():
     
     if os.path.exists(index_path):
         return FileResponse(index_path)
-    return {"message": "Welcome to Hush (frontend code not detected)"}
+    return {"message": "Welcome to EduGen AI (frontend code not detected)"}
 
 # --- Startup ---
 @app.on_event("startup")

@@ -10,7 +10,7 @@ import re
 import logging
 
 # Set up logging
-logger = logging.getLogger("hush")
+logger = logging.getLogger("edugen")
 logger.setLevel(logging.INFO)
 
 def _call_llm_with_fallback(messages: list, max_tokens: int = 3000) -> str:
