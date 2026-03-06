@@ -23,7 +23,9 @@ Developed as a modern replacement for the "Hush" project, it features a premium,
 
 ### Frontend
 - **Framework**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn UI](https://ui.shadcn.com/)
+- **Icons**: Lucide React
 
 ## 📂 Project Structure
 
@@ -34,7 +36,8 @@ edugen-ai-learning-engine/
 │   ├── database/       # DB models and session management
 │   ├── routes/         # API endpoints (upload, auth, quiz)
 │   └── services/       # Core AI services (LLM, RAG, etc.)
-├── frontend/           # React Frontend
+├── frontend/           # Modern TypeScript + Shadcn UI Frontend
+├── frontend_old/       # Legacy JavaScript-based frontend
 ├── requirements.txt    # Python dependencies
 └── .env                # Configuration
 ```
